@@ -1,0 +1,101 @@
+<html>
+
+<head>
+  <style>
+    body {
+      margin: 0;
+    }
+  </style>
+
+  <script src="https://unpkg.com/three"></script>
+  <script src="https://unpkg.com/three-spritetext"></script>
+  <script src="https://unpkg.com/3d-force-graph"></script>
+</head>
+
+<body>
+
+  <div id="3d-graph"></div>
+
+  <script>
+    function changeGroupById(nodes, id, newGroup) {
+      for (let i = 0; i < nodes.length; i++) {
+        if (nodes[i].id === id) {
+          nodes[i].group = newGroup;
+          break; // Exit loop since the node is found
+        }
+      }
+    }
+
+    let nodes = [];
+    let links = [];
+    let group = 1;
+
+    // Generate nodes
+    for (let i = 0; i < 256; i++) {
+      let hexValue = i.toString(16).toUpperCase().padStart(2, '0');
+      let node = {
+        id: hexValue,
+        name: hexValue,
+        group: group
+      };
+      nodes.push(node);
+    }
+
+    // Generate connections
+    let connections = [
+      "91 > E2 > 0A",
+      "99 > C8 > EA",
+      "8C > 9C > BE > D7",
+      "A3 > 39 > 1C",
+      "E6 > 66 > A4 > 87 > 64",
+      "7F > 83 > 09 > 8D > 3C > A3",
+      "C4 > 57 > 0A",
+      "48 > 8B > D3 > 9B > 7B",
+      "1C > BA > B4 > 86",
+      "A7 > 1B > 44 > 28",
+      "B4 > 28",
+      "57 > E9 > 50 > E5 > 06 > 8A",
+      "EC > 72 > FC > 87",
+
+      "8C > D7 > E6 > 64 > 7F > A3 > 1C > 86 > A7 > 28 > 0B > BC > 63 > C4 > 91 > 0A > 8A > 99 > EA > 48 > BD > 6E > EC > 3D > 7B > 8C",
+      // "0A > 69 > 40 > 6C > 12 > 06 > 8A"
+    ];
+
+    for (let i = 0; i < connections.length; i++) {
+      let connection = connections[i];
+      let nodesInConnection = connection.split(" > ");
+      for (let n = 0; n < nodesInConnection.length; n++) {
+        let nodeId = nodesInConnection[n];
+        changeGroupById(nodes, nodeId, i);
+      }
+      for (let j = 0; j < nodesInConnection.length - 1; j++) {
+        let link = {
+          source: nodesInConnection[j],
+          target: nodesInConnection[j + 1]
+        };
+        links.push(link);
+      }
+    }
+
+    const data = {
+      nodes: nodes,
+      links: links
+    };
+
+    const elem = document.getElementById('3d-graph');
+
+    const Graph = ForceGraph3D()(elem)
+      .graphData(data)
+      .nodeAutoColorBy('group')
+      .nodeThreeObject(node => {
+        const sprite = new SpriteText(node.id);
+        sprite.material.depthWrite = true;
+        sprite.color = node.color;
+        sprite.textHeight = 8;
+        return sprite;
+      });
+
+  </script>
+</body>
+
+</html>
