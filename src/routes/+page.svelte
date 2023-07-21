@@ -1,5 +1,6 @@
 <script>
     import { onMount } from "svelte";
+    import { writable } from "svelte/store";
 
     import SpriteText from "three-spritetext";
     import ForceGraph3D from "3d-force-graph";
@@ -21,24 +22,29 @@
         };
     });
 
+    let connections = writable(loadData("connections"));
+    $: connectionsData = $connections;
+
     // Generate connections
-    let connections = loadData("connections");
+    //let connections = loadData("connections");
 
     let links = [];
-    connections.forEach((connection) => {
-        const nodesInConnection = connection.split(" > ");
-        nodesInConnection.forEach((nodeId, index) => {
-            changeGroupById(nodes, nodeId, index);
-            if (index < nodesInConnection.length - 1) {
-                links.push({
-                    source: nodeId,
-                    target: nodesInConnection[index + 1],
-                });
-            }
+    let data = {};
+    $: {
+        connectionsData.forEach((connection) => {
+            const nodesInConnection = connection.split(" > ");
+            nodesInConnection.forEach((nodeId, index) => {
+                changeGroupById(nodes, nodeId, index);
+                if (index < nodesInConnection.length - 1) {
+                    links.push({
+                        source: nodeId,
+                        target: nodesInConnection[index + 1],
+                    });
+                }
+            });
         });
-    });
-
-    const data = { nodes, links };
+        data = { nodes, links };
+    }
 
     onMount(() => {
         const elem = document.getElementById("3d-graph");
