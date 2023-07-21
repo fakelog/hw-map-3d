@@ -4,17 +4,18 @@
 
 @layer components {
     .header_button {
+        @apply bg-transparent;
         @apply rounded-lg;
         @apply p-2;
         transition: background 0.3s ease;
     }
 
     .header_button:hover {
-        @apply bg-sky-400;
+        @apply bg-emerald-200;
         @apply bg-opacity-10
     }
 
     .header_button:active {
-        background: radial-gradient(hsl(205deg, 100%, 65%, 50%), transparent);
+        background: radial-gradient(rgba(138, 253, 140, 0.5), transparent);
     }
 }

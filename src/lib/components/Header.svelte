@@ -1,9 +1,14 @@
 <script>
-    import MenuButton from "./MenuButton.svelte";
-    import ThemeButton from "./ThemeButton.svelte";
+    import ArrowDown from "./icons/ArrowDown.svelte";
+    import ArrowUp from "./icons/ArrowUp.svelte";
+    import Menu from "./icons/Menu.svelte";
+
+    import IconButton from "./IconButton.svelte";
+    import Input from "./Input.svelte";
+    import RouteOverlay from "./RouteOverlay.svelte";
 
     let visible = true;
-    let menuVisible = false;
+    let menuVisible = true;
 
     function onVisibleClicked() {
         visible = !visible;
@@ -16,34 +21,27 @@
 
 {#if visible}
     <header
-        class="bg-sky-300 sticky m-4 rounded-md top-0 z-10 p-2 transition-all duration-150 bg-opacity-40 backdrop-blur-sm"
+        class="bg-neutral-500 sticky m-4 rounded-xl z-10 p-2 transition-all duration-150 bg-opacity-40 backdrop-blur-sm"
     >
         <nav class="flex items-center justify-between">
-            <MenuButton on:click={onMenuVisibleClicked} />
-            <button on:click={onVisibleClicked}>///</button>
-            <ThemeButton />
+            <IconButton on:click={onMenuVisibleClicked}>
+                <Menu />
+            </IconButton>
+            <Input placeholder="Название" />
+            <IconButton on:click={onVisibleClicked}>
+                <ArrowUp />
+            </IconButton>
         </nav>
     </header>
 {:else}
     <header
-        class="sticky top-0 z-10 bg-sky-300 transition-all duration-150 bg-opacity-10 hover:bg-opacity-20 hover:backdrop-blur-sm"
+        class="sticky top-0 z-10 bg-neutral-600 bg-opacity-30 hover:bg-opacity-40 hover:backdrop-blur-sm transition-all duration-150"
     >
         <nav class="flex justify-center items-center">
-            <button on:click={onVisibleClicked}>\\\</button>
+            <button on:click={onVisibleClicked}><ArrowDown /></button>
         </nav>
     </header>
 {/if}
 {#if menuVisible}
-    <div
-        class="sticky z-20 w-fit h-fit m-4 bg-opacity-60 rounded-md p-2 bg-sky-300 backdrop-blur-sm flex flex-col"
-    >
-        <input
-            class="p-2 w-fit rounded-lg bg-opacity-25"
-            type="text"
-            name=""
-            id=""
-            placeholder="00 > 01 > 00"
-        />
-        <button>+</button>
-    </div>
+    <RouteOverlay />
 {/if}
