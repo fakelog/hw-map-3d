@@ -1,4 +1,17 @@
-<button class="header_button active:header_button hover:header_button">
+<script>
+    import { createEventDispatcher } from "svelte";
+
+    const dispatch = createEventDispatcher();
+
+    async function onClick() {
+        dispatch("click");
+    }
+</script>
+
+<button
+    class="header_button active:header_button hover:header_button"
+    on:click={onClick}
+>
     <svg
         width="24"
         height="24"
