@@ -41,5 +41,5 @@
         </div>
     {/each}
 
-    <button on:click={onClickAdd}>+</button>
+    <IconButton on:click={onClickAdd}>+</IconButton>
 </div>
