@@ -17,7 +17,7 @@
 >
     <RouteOverlay />
     <IconButton
-        class="self-end p-2 rounded-lg bg-neutral-600 bg-opacity-60 backdrop-blur-sm header_button active:header_button hover:header_butto"
+        class="self-end p-4 rounded-lg bg-neutral-600 bg-opacity-60 backdrop-blur-sm header_button active:header_button hover:header_butto"
         on:click={onClickSave}
     >
         <Save />

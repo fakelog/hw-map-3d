@@ -1,5 +1,5 @@
 <script>
-    const size = 36;
+    const size = 24;
 </script>
 
 <svg
