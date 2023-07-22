@@ -31,10 +31,10 @@
 </script>
 
 <div
-    class="flex items-center rounded-lg bg-emerald-800 bg-opacity-20 {classInput}"
+    class="flex items-center rounded-lg bg-amber-100 bg-opacity-10 {classInput}"
 >
     <input
-        class="flex-grow py-2 px-4 rounded-lg bg-transparent placeholder:text-emerald-200 placeholder:text-opacity-40 text-amber-100 focus:bg-emerald-900 focus:outline-0"
+        class="flex-grow py-2 px-4 rounded-lg bg-transparent placeholder:text-emerald-200 placeholder:text-opacity-40 text-accent focus:bg-amber-200 focus:bg-opacity-5 focus:outline-0"
         type="text"
         {placeholder}
         bind:value

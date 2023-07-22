@@ -12,9 +12,7 @@
     }
 </script>
 
-<div
-    class="flex flex-col justify-between absolute top-24 left-0 right-0 bottom-0 m-4 z-10"
->
+<div class="flex flex-col w-full justify-between space-y-4">
     <RouteOverlay />
     <FloatingActionButton on:click={onClickSave}>
         <Save />

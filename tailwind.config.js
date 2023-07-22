@@ -10,7 +10,7 @@ export default {
     // },
     extend: {
       colors: {
-        accent: colors.emerald['600'],
+        accent: colors.amber['100'],
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

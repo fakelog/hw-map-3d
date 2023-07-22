@@ -20,10 +20,12 @@
   }
 </script>
 
-<Header on:clickMenu={onClickedMenu} />
-
-{#if menuVisible}
-  <MenuOverlay />
-{/if}
-
+<div
+  class="flex flex-col lg:flex-row absolute left-0 top-0 right-0 z-50 p-4 space-y-4 lg:space-y-0 lg:space-x-4"
+>
+  <Header on:clickMenu={onClickedMenu} />
+  {#if menuVisible}
+    <MenuOverlay />
+  {/if}
+</div>
 <slot />

@@ -4,6 +4,10 @@
     let classExport = "";
     export { classExport as class };
 
+    if (classExport === "") {
+        classExport = "p-2";
+    }
+
     const dispatch = createEventDispatcher();
 
     async function onClick() {
@@ -12,7 +16,7 @@
 </script>
 
 <button
-    class="rounded-lg transition-all duration-150 ease-linear hover:bg-emerald-200 hover:bg-opacity-10 active:bg-gradient-radial from-[#05966820] to-transparent p-2 {classExport}"
+    class="rounded-lg transition-all duration-150 ease-linear hover:bg-amber-200 hover:bg-opacity-10 active:bg-gradient-radial from-[#96850520] to-transparent {classExport}"
     on:click={onClick}
 >
     <slot />

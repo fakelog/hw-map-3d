@@ -40,5 +40,7 @@
     </div>
   {/each}
 
-  <IconButton on:click={onClickAdd}>+</IconButton>
+  <IconButton on:click={onClickAdd}
+    ><span class="text-accent">+</span></IconButton
+  >
 </div>
