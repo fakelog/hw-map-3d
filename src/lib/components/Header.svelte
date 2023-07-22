@@ -23,7 +23,7 @@
 
 {#if visible}
     <header
-        class="w-full h-fit p-2 bg-neutral-500 rounded-xl bg-opacity-40 backdrop-blur-sm"
+        class="w-full h-fit p-2 bg-background rounded-xl bg-opacity-60 backdrop-blur-sm"
     >
         <nav class="flex items-center justify-between">
             <IconButton on:click={onVisibleClicked}>
@@ -40,7 +40,7 @@
     </header>
 {:else}
     <header
-        class="group w-full h-fit hover:backdrop-blur-sm rounded-lg bg-neutral-600 bg-opacity-30 hover:bg-opacity-40 transition-all duration-150"
+        class="group w-full h-fit hover:backdrop-blur-sm rounded-lg bg-background bg-opacity-30 hover:bg-opacity-40 transition-all duration-150"
     >
         <nav class="flex justify-center items-center">
             <button

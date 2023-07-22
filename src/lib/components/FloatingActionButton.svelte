@@ -10,7 +10,7 @@
     }
 </script>
 
-<div class="self-end rounded-xl bg-neutral-600 bg-opacity-60 backdrop-blur-sm">
+<div class="self-end rounded-xl bg-background bg-opacity-60 backdrop-blur-sm">
     <IconButton class="p-4" on:click={onClicked}>
         <slot />
     </IconButton>
