@@ -7,7 +7,7 @@
     import Menu from "./icons/Menu.svelte";
 
     import Input from "./Input.svelte";
-    import ButtonHeader from "./ButtonHeader.svelte";
+    import IconButton from "./IconButton.svelte";
 
     const dispatch = createEventDispatcher();
 
@@ -28,17 +28,17 @@
         class="bg-neutral-500 sticky m-4 rounded-xl z-10 p-2 transition-all duration-150 bg-opacity-40 backdrop-blur-sm"
     >
         <nav class="flex items-center justify-between">
-            <ButtonHeader on:click={onClickedMenu}>
+            <IconButton on:click={onClickedMenu}>
                 {#if menuVisible}
                     <Close />
                 {:else}
                     <Menu />
                 {/if}
-            </ButtonHeader>
+            </IconButton>
             <Input class="hidden sm:block" placeholder="Название" />
-            <ButtonHeader on:click={onVisibleClicked}>
+            <IconButton on:click={onVisibleClicked}>
                 <ArrowUp />
-            </ButtonHeader>
+            </IconButton>
         </nav>
     </header>
 {:else}
