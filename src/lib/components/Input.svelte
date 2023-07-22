@@ -13,6 +13,10 @@
     export { value };
     export { placeholder };
 
+    if (classInput === "") {
+        classInput += "flex-grow";
+    }
+
     const dispatch = createEventDispatcher();
 
     function onClickDone() {
@@ -26,9 +30,11 @@
     }
 </script>
 
-<div class="flex items-center rounded-lg bg-emerald-800 bg-opacity-20">
+<div
+    class="flex items-center rounded-lg bg-emerald-800 bg-opacity-20 {classInput}"
+>
     <input
-        class="py-2 px-4 rounded-lg bg-transparent placeholder:text-emerald-200 placeholder:text-opacity-40 text-amber-100 focus:bg-emerald-900 focus:outline-0 {classInput}"
+        class="flex-grow py-2 px-4 rounded-lg bg-transparent placeholder:text-emerald-200 placeholder:text-opacity-40 text-amber-100 focus:bg-emerald-900 focus:outline-0"
         type="text"
         {placeholder}
         bind:value

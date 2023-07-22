@@ -26,10 +26,10 @@
 </script>
 
 <div
-  class="flex flex-col w-fit h-fit bg-opacity-60 rounded-xl p-2 bg-neutral-600 backdrop-blur-sm"
+  class="flex flex-col w-full h-auto bg-opacity-60 rounded-xl p-4 space-y-4 bg-neutral-600 backdrop-blur-sm"
 >
   {#each $connectionsStore as connection, index}
-    <div class="flex items-center m-2 p-2 space-x-2">
+    <div class="flex items-center space-x-2">
       <Input
         value={connection}
         on:change={(event) => onChangeInput(event, index)}

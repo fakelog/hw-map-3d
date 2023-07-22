@@ -13,7 +13,7 @@
 </script>
 
 <div
-    class="flex justify-between absolute top-24 left-0 right-0 bottom-0 m-4 z-10"
+    class="flex flex-col justify-between absolute top-24 left-0 right-0 bottom-0 m-4 z-10"
 >
     <RouteOverlay />
     <IconButton
