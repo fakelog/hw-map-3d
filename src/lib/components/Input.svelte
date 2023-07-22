@@ -7,6 +7,7 @@
     let classInput = "";
     let focused = false;
     let value = "";
+    let inputValue = value;
     let placeholder = "";
 
     export { classInput as class };
@@ -18,6 +19,16 @@
     }
 
     const dispatch = createEventDispatcher();
+
+    function handleInput() {
+        if (value.length > inputValue.length) {
+            const regex = /(?!> )([0-9A-f]{2})(?! >)/gi;
+            const formattedValue = value.replace(regex, "$1 > ");
+
+            value = formattedValue;
+        }
+        inputValue = value;
+    }
 
     function onClickDone() {
         focused = false;
@@ -39,6 +50,7 @@
         {placeholder}
         bind:value
         on:focus={onFocus}
+        on:input={handleInput}
     />
     {#if focused}
         <IconButton on:click={onClickDone}>
