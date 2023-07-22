@@ -1,7 +1,7 @@
 <script>
     import { createEventDispatcher } from "svelte";
 
-    let classExport = "header_button active:header_button hover:header_butto";
+    let classExport = "";
     export { classExport as class };
 
     const dispatch = createEventDispatcher();
@@ -11,6 +11,9 @@
     }
 </script>
 
-<button class={classExport} on:click={onClick}>
+<button
+    class="rounded-lg transition-all duration-150 ease-linear hover:bg-emerald-200 hover:bg-opacity-10 active:bg-gradient-radial from-[#05966820] to-transparent p-2 {classExport}"
+    on:click={onClick}
+>
     <slot />
 </button>
