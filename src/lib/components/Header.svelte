@@ -1,6 +1,7 @@
 <script>
     import ArrowDown from "./icons/ArrowDown.svelte";
     import ArrowUp from "./icons/ArrowUp.svelte";
+    import Close from "./icons/Close.svelte";
     import Menu from "./icons/Menu.svelte";
 
     import IconButton from "./IconButton.svelte";
@@ -25,7 +26,11 @@
     >
         <nav class="flex items-center justify-between">
             <IconButton on:click={onMenuVisibleClicked}>
-                <Menu />
+                {#if menuVisible}
+                    <Close />
+                {:else}
+                    <Menu />
+                {/if}
             </IconButton>
             <Input placeholder="Название" />
             <IconButton on:click={onVisibleClicked}>
