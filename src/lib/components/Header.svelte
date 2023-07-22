@@ -1,4 +1,6 @@
 <script>
+    import { createEventDispatcher } from "svelte";
+
     import ArrowDown from "./icons/ArrowDown.svelte";
     import ArrowUp from "./icons/ArrowUp.svelte";
     import Close from "./icons/Close.svelte";
@@ -6,17 +8,18 @@
 
     import IconButton from "./IconButton.svelte";
     import Input from "./Input.svelte";
-    import RouteOverlay from "./RouteOverlay.svelte";
+
+    const dispatch = createEventDispatcher();
 
     let visible = true;
-    let menuVisible = true;
+    let menuVisible = false;
 
     function onVisibleClicked() {
         visible = !visible;
     }
 
-    function onMenuVisibleClicked() {
-        menuVisible = !menuVisible;
+    function onClickedMenu(event) {
+        dispatch("clickMenu", event);
     }
 </script>
 
@@ -25,7 +28,7 @@
         class="bg-neutral-500 sticky m-4 rounded-xl z-10 p-2 transition-all duration-150 bg-opacity-40 backdrop-blur-sm"
     >
         <nav class="flex items-center justify-between">
-            <IconButton on:click={onMenuVisibleClicked}>
+            <IconButton on:click={onClickedMenu}>
                 {#if menuVisible}
                     <Close />
                 {:else}
@@ -46,7 +49,4 @@
             <button on:click={onVisibleClicked}><ArrowDown /></button>
         </nav>
     </header>
-{/if}
-{#if menuVisible}
-    <RouteOverlay />
 {/if}

@@ -1,17 +1,29 @@
 <script>
-  import '../app.css';
+  import { saveData, loadData } from "$lib/stores/localStroage";
+  import { defaultConnections } from "$lib/const/defaultConnections";
 
-  import Header from '$lib/components/Header.svelte';
+  import "../app.css";
 
-  import { saveData, loadData } from '$lib/stores/localStroage';
-  import { defaultConnections } from '$lib/const/defaultConnections';
+  import Header from "$lib/components/Header.svelte";
+  import MenuOverlay from "$lib/components/MenuOverlay.svelte";
+
+  let menuVisible = true;
 
   try {
-    loadData('connections');
+    loadData("connections");
   } catch (error) {
-    saveData('connections', defaultConnections);
+    saveData("connections", defaultConnections);
+  }
+
+  async function onClickedMenu() {
+    menuVisible = !menuVisible;
   }
 </script>
 
-<Header />
+<Header on:clickMenu={onClickedMenu} />
+
+{#if menuVisible}
+  <MenuOverlay />
+{/if}
+
 <slot />

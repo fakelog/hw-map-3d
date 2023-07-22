@@ -1,9 +1,9 @@
 <script>
-  import { onMount } from 'svelte';
+  import { onMount } from "svelte";
 
-  import SpriteText from 'three-spritetext';
-  import ForceGraph3D from '3d-force-graph';
-  import { connectionsStore } from '$lib/stores/connections';
+  import SpriteText from "three-spritetext";
+  import ForceGraph3D from "3d-force-graph";
+  import { connectionsStore } from "$lib/stores/connections";
 
   const GraphInstance = ForceGraph3D();
   let graphElement;
@@ -17,16 +17,13 @@
   }
 
   let nodes = Array.from({ length: 256 }, (_, i) => {
-    const hexValue = i.toString(16).toUpperCase().padStart(2, '0');
+    const hexValue = i.toString(16).toUpperCase().padStart(2, "0");
     return {
       id: hexValue,
       name: hexValue,
       group: 1,
     };
   });
-
-  // Generate connections
-  //let connections = loadData("connections");
 
   let links = [];
   let data = {};
@@ -36,7 +33,7 @@
 
     $connectionsStore.forEach((connection) => {
       const nodesInConnection = connection
-        .split(' > ')
+        .split(" > ")
         .filter(Boolean)
         .filter((value) => value.length === 2);
 
@@ -57,7 +54,7 @@
     data = { nodes, links };
 
     GraphInstance.graphData(data)
-      .nodeAutoColorBy('group')
+      .nodeAutoColorBy("group")
       .nodeThreeObject((node) => {
         const sprite = new SpriteText(node.id);
         sprite.material.depthWrite = true;
@@ -69,14 +66,14 @@
 
   onMount(() => {
     if (!graphElement) {
-      console.error('ooops');
+      console.error("ooops");
       return;
     }
 
     GraphInstance(graphElement)
-      .backgroundColor('#000')
+      .backgroundColor("#000")
       .graphData(data)
-      .nodeAutoColorBy('group')
+      .nodeAutoColorBy("group")
       .nodeThreeObject((node) => {
         const sprite = new SpriteText(node.id);
         sprite.material.depthWrite = true;
