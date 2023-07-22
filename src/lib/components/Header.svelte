@@ -32,7 +32,7 @@
                     <Menu />
                 {/if}
             </IconButton>
-            <Input placeholder="Название" />
+            <Input class="hidden sm:block" placeholder="Название" />
             <IconButton on:click={onVisibleClicked}>
                 <ArrowUp />
             </IconButton>
