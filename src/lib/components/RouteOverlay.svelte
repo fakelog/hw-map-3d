@@ -1,5 +1,5 @@
 <script>
-  import Close from "./icons/Close.svelte";
+  import Delete from "./icons/Delete.svelte";
   import IconButton from "./IconButton.svelte";
   import Input from "./Input.svelte";
   import { connectionsStore } from "$lib/stores/connections";
@@ -12,7 +12,7 @@
     connectionsStore.update((arr) => arr.filter((_, i) => i !== index));
   }
 
-  function handleChange(event, index) {
+  function onChangeInput(event, index) {
     connectionsStore.update((arr) => {
       const updatedArr = [...arr];
       updatedArr[index] = event.detail;
@@ -31,10 +31,10 @@
     <div class="flex items-center m-2 p-2 space-x-2">
       <Input
         value={connection}
-        on:input={(event) => handleChange(event, index)}
+        on:change={(event) => onChangeInput(event, index)}
       />
       <IconButton on:click={() => onClickDelete(index)}>
-        <Close />
+        <Delete />
       </IconButton>
     </div>
   {/each}
