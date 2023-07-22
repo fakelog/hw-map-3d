@@ -7,7 +7,7 @@
   import Header from "$lib/components/Header.svelte";
   import MenuOverlay from "$lib/components/MenuOverlay.svelte";
 
-  let menuVisible = true;
+  let menuVisible = false;
 
   try {
     loadData("connections");
