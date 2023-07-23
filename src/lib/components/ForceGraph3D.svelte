@@ -82,7 +82,10 @@
                 sprite.color = node.color;
                 sprite.textHeight = 8;
                 return sprite;
-            });
+            })
+            .linkDirectionalParticles(4)
+            .linkDirectionalParticleWidth(2)
+            .linkDirectionalParticleSpeed(0.01);
     });
 </script>
 
