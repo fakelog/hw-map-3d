@@ -6,7 +6,7 @@
     import RouteOverlay from "./RouteOverlay.svelte";
     import Save from "./icons/Save.svelte";
 
-    async function onClickSave() {
+    function onClickSave() {
         const newConnections = $connectionsStore;
         saveData("connections", newConnections);
     }

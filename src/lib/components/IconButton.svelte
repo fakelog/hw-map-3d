@@ -10,7 +10,7 @@
 
     const dispatch = createEventDispatcher();
 
-    async function onClick() {
+    function onClick() {
         dispatch("click");
     }
 </script>

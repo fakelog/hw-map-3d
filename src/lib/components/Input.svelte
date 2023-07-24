@@ -35,7 +35,7 @@
         dispatch("change", value);
     }
 
-    async function onFocus(event) {
+    function onFocus(event) {
         focused = true;
         dispatch("focus", event);
     }
