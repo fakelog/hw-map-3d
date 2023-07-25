@@ -11,7 +11,9 @@ export default {
     extend: {
       colors: {
         accent: colors.amber['100'],
-        background: colors.neutral['600']
+        background: colors.neutral['600'],
+        negative: colors.rose['500'],
+        positive: colors.emerald['600'],
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
