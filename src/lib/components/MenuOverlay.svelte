@@ -1,22 +1,53 @@
-<script>
+<script lang="ts">
     import { connectionsStore } from "$lib/stores/connections";
     import { saveData } from "$lib/stores/localStroage";
-    import FloatingActionButton from "./FloatingActionButton.svelte";
+    import { getShareConnections } from "$lib/useCase/shareConnections/ShareConnections";
 
+    import Dialog from "./Dialog.svelte";
+    import FloatingActionButton from "./FloatingActionButton.svelte";
     import RouteOverlay from "./RouteOverlay.svelte";
     import Save from "./icons/Save.svelte";
+    import Share from "./icons/Share.svelte";
+
+    let showShareDialog = false;
+    let shareMessage: string = "";
 
     function onClickSave() {
         const newConnections = $connectionsStore;
         saveData("connections", newConnections);
     }
+
+    async function onClickShare() {
+        try {
+            shareMessage = await getShareConnections();
+        } catch (error) {
+            shareMessage = error;
+        }
+        console.log(shareMessage);
+        showShareDialog = true;
+    }
+
+    function onClickDialog() {
+        showShareDialog = false;
+    }
 </script>
+
+{#if showShareDialog}
+    <Dialog title="Поделиться" on:click={onClickDialog}>
+        <textarea name="" id="" cols="30" rows="10">
+            {shareMessage}
+        </textarea>
+    </Dialog>
+{/if}
 
 <div class="flex flex-col w-full justify-between space-y-4">
     <RouteOverlay />
-    <dev class="flex flex-row justify-end">
-        <FloatingActionButton on:click={onClickSave}>
+    <div class="flex flex-row justify-end space-x-4">
+        <FloatingActionButton title="Поделиться" on:click={onClickShare}>
+            <Share />
+        </FloatingActionButton>
+        <FloatingActionButton title="Сохранить" on:click={onClickSave}>
             <Save />
         </FloatingActionButton>
-    </dev>
+    </div>
 </div>

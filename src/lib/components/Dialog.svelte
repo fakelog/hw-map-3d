@@ -7,6 +7,8 @@
 
     let title: string = "Dialog title";
 
+    export { title };
+
     const dispatch = createEventDispatcher();
 
     function onClick(type: string) {
@@ -22,7 +24,9 @@
             {title}
         </header>
         <main class="p-4 text-stone-400"><slot /></main>
-        <footer class="p-2 rounded-b-xl bg-background bg-opacity-10">
+        <footer
+            class="p-2 flex justify-center items-center w-full rounded-b-xl bg-background bg-opacity-30"
+        >
             <TextButton
                 text="Отмена"
                 type="negative"
