@@ -15,7 +15,7 @@
     saveData("connections", defaultConnections);
   }
 
-  async function onClickedMenu() {
+  function onClickedMenu() {
     menuVisible = !menuVisible;
   }
 </script>
