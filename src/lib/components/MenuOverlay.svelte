@@ -14,7 +14,9 @@
 
 <div class="flex flex-col w-full justify-between space-y-4">
     <RouteOverlay />
-    <FloatingActionButton on:click={onClickSave}>
-        <Save />
-    </FloatingActionButton>
+    <dev class="flex flex-row justify-end">
+        <FloatingActionButton on:click={onClickSave}>
+            <Save />
+        </FloatingActionButton>
+    </dev>
 </div>
