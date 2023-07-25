@@ -4,12 +4,16 @@
     import SpriteText from "three-spritetext";
     import ForceGraph3D from "3d-force-graph";
     import { connectionsStore } from "$lib/stores/connections";
+    import { ConnectionsUtils } from "$lib/utils/ConnectionsUtils";
+    import { saveData } from "$lib/stores/localStroage";
 
     let graphElement;
     let nodes = [];
     let links = [];
     let data = {};
+    let group = 0;
 
+    const СonnectionsInstance = new ConnectionsUtils();
     const GraphInstance = ForceGraph3D();
 
     function changeGroupById(nodes, id, newGroup) {
@@ -25,7 +29,7 @@
         return {
             id: hexValue,
             name: hexValue,
-            group: 1,
+            group: group,
         };
     });
 
@@ -34,24 +38,22 @@
         const _nodes = [...nodes];
 
         $connectionsStore.forEach((connection) => {
-            const nodesInConnection = connection
-                .split(" > ")
-                .filter(Boolean)
-                .filter((value) => value.length === 2);
+            group++;
 
-            nodesInConnection.forEach((nodeId, index) => {
-                changeGroupById(_nodes, nodeId, index);
-                if (index < nodesInConnection.length - 1) {
-                    _links.push({
-                        source: nodeId,
-                        target: nodesInConnection[index + 1],
-                    });
-                }
+            const nodesInConnection =
+                СonnectionsInstance.getCleanupConnection(connection);
+
+            СonnectionsInstance.getLinks(nodesInConnection, _links);
+
+            nodesInConnection.forEach((node) => {
+                changeGroupById(_nodes, node, group);
             });
         });
 
         links = _links;
         nodes = _nodes;
+
+        saveData("links", _links);
 
         data = { nodes, links };
 

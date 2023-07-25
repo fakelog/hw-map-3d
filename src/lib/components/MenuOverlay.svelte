@@ -1,7 +1,8 @@
 <script lang="ts">
     import { connectionsStore } from "$lib/stores/connections";
-    import { saveData } from "$lib/stores/localStroage";
+    import { loadData, saveData } from "$lib/stores/localStroage";
     import { getShareConnections } from "$lib/useCase/shareConnections/ShareConnections";
+    import { ConnectionsUtils } from "$lib/utils/ConnectionsUtils";
 
     import Dialog from "./Dialog.svelte";
     import FloatingActionButton from "./FloatingActionButton.svelte";
@@ -19,11 +20,10 @@
 
     async function onClickShare() {
         try {
-            shareMessage = await getShareConnections();
+            shareMessage = loadData("links");
         } catch (error) {
             shareMessage = error;
         }
-        console.log(shareMessage);
         showShareDialog = true;
     }
 
