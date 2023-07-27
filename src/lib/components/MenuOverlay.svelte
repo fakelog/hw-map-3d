@@ -20,7 +20,7 @@
 
     async function onClickShare() {
         try {
-            shareMessage = loadData("links");
+            shareMessage = JSON.stringify(loadData("connections"));
         } catch (error) {
             shareMessage = error;
         }
