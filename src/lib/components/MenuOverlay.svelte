@@ -13,9 +13,18 @@
     let showShareDialog = false;
     let shareMessage: string = "";
 
-    function onClickSave() {
+    async function onClickSave() {
         const newConnections = $connectionsStore;
         saveData("connections", newConnections);
+        const response = await fetch("/api/routes/add", {
+            method: "POST",
+            body: JSON.stringify({ routes: newConnections }),
+            headers: {
+                "content-type": "application/json",
+            },
+        });
+        const routesId = await response.json();
+        saveData("routesId", routesId.routesId);
     }
 
     async function onClickShare() {
