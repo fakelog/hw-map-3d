@@ -1,0 +1,1 @@
+export let apiBaseURL: string = "https://hwmap3d-1-r9011989.deta.app";
