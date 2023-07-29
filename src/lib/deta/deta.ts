@@ -1,5 +1,5 @@
 import BaseClass from './base';
-import DriveClass from './drive';
+
 import type { KeyType } from './types/key';
 
 export default class Deta {
@@ -35,20 +35,5 @@ export default class Deta {
             throw new Error('Base name is not defined');
         }
         return new BaseClass(this.key, this.type, this.projectId, name, host);
-    }
-
-    /**
-     * Drive returns instance of Drive class
-     *
-     * @param {string} driveName
-     * @param {string} [host]
-     * @returns {DriveClass}
-     */
-    public Drive(driveName: string, host?: string): DriveClass {
-        const name = driveName?.trim();
-        if (!name) {
-            throw new Error('Drive name is not defined');
-        }
-        return new DriveClass(this.key, this.type, this.projectId, name, host);
     }
 }
