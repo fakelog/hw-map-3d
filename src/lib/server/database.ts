@@ -1,4 +1,4 @@
-import { Deta } from "$lib/deta";
+import { Deta } from "$lib/server/deta";
 
 export async function addRoutesByData(data: string) {
     const deta = Deta();
