@@ -24,7 +24,8 @@
 	"dependencies": {
 		"@sveltejs/adapter-cloudflare": "^2.3.1",
 		"3d-force-graph": "^1.71.5",
-		"deta": "^1.2.0",
+		"dotenv": "^16.3.1",
+		"node-fetch": "^3.3.2",
 		"three-spritetext": "^1.8.1"
 	}
 }
