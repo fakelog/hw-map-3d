@@ -1,7 +1,7 @@
-import { Deta } from "deta";
+import { Deta } from "$lib/deta";
 
 export async function addRoutesByData(data: string) {
-    const deta = Deta(process.env.DETA_PROJECT_KEY);
+    const deta = Deta();
     const db = deta.Base('connections');
     const routes = await db.insert(data);
 
