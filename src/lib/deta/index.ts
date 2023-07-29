@@ -1,6 +1,6 @@
 import DetaClass from './deta';
 import BaseClass from './base';
-import DriveClass from './drive';
+// import DriveClass from './drive';
 import { KeyType } from './types/key';
 
 /**
@@ -43,6 +43,6 @@ export function Base(baseName: string, host?: string): BaseClass {
  * @param {string} [host]
  * @returns {DriveClass}
  */
-export function Drive(driveName: string, host?: string): DriveClass {
-  return Deta().Drive(driveName, host);
-}
+// export function Drive(driveName: string, host?: string): DriveClass {
+//   return Deta().Drive(driveName, host);
+// }
