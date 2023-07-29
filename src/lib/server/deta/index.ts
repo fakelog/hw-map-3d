@@ -1,3 +1,5 @@
+import { DETA_PROJECT_KEY } from '$env/static/private';
+
 import DetaClass from './deta';
 import { KeyType } from './types/key';
 
@@ -17,7 +19,7 @@ export function Deta(projectKey?: string, authToken?: string): DetaClass {
     return new DetaClass(token, KeyType.AuthToken, key);
   }
 
-  const apiKey = key || process.env.DETA_PROJECT_KEY?.trim();
+  const apiKey = key || DETA_PROJECT_KEY?.trim();
   if (!apiKey) {
     throw new Error('Project key is not defined');
   }
