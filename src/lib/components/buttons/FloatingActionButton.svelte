@@ -1,7 +1,7 @@
 <script lang="ts">
     import { createEventDispatcher } from "svelte";
 
-    import IconButton from "./IconButton.svelte";
+    import IconButton from "../IconButton.svelte";
 
     let title = "FloatingActionButton";
 

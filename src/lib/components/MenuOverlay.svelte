@@ -6,7 +6,7 @@
     import { ConnectionsUtils } from "$lib/utils/ConnectionsUtils";
 
     import Dialog from "./Dialog.svelte";
-    import FloatingActionButton from "./FloatingActionButton.svelte";
+    import FloatingActionButton from "./buttons/FloatingActionButton.svelte";
     import RouteOverlay from "./RouteOverlay.svelte";
     import Save from "./icons/Save.svelte";
     import Share from "./icons/Share.svelte";
