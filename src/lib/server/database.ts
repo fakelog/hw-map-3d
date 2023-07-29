@@ -9,7 +9,7 @@ export async function addRoutesByData(data: string) {
 }
 
 export async function getRoutesByKey(key: string) {
-    const deta = Deta(process.env.DETA_PROJECT_KEY);
+    const deta = Deta();
     const db = deta.Base('connections');
     const routes = await db.get(key);
 

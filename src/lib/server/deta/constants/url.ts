@@ -1,3 +1,5 @@
+import { DETA_PROJECT_KEY } from '$env/static/private';
+
 const url = {
   BASE: `https://:host/v1/:project_id/:base_name`,
 };
@@ -10,7 +12,7 @@ const url = {
  */
 function base(host?: string): string {
   const hostPath =
-    host?.trim() || process.env.DETA_BASE_HOST?.trim() || 'database.deta.sh';
+    host?.trim() || DETA_PROJECT_KEY?.trim() || 'database.deta.sh';
   return url.BASE.replace(':host', hostPath);
 }
 
