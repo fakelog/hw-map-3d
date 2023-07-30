@@ -3,7 +3,7 @@
 
     import SpriteText from "three-spritetext";
     import ForceGraph3D from "3d-force-graph";
-    import { connectionsStore } from "$lib/stores/connections";
+    import { routesStore } from "$lib/stores/routes";
     import { ConnectionsUtils } from "$lib/utils/ConnectionsUtils";
     import { saveData } from "$lib/stores/localStroage";
 
@@ -37,7 +37,7 @@
         const _links = [];
         const _nodes = [...nodes];
 
-        $connectionsStore.forEach((connection) => {
+        $routesStore.forEach((connection) => {
             group++;
 
             const nodesInConnection =
@@ -75,7 +75,7 @@
         }
 
         GraphInstance(graphElement)
-            .backgroundColor("#000")
+            .backgroundColor("black")
             .graphData(data)
             .nodeAutoColorBy("group")
             .nodeThreeObject((node) => {

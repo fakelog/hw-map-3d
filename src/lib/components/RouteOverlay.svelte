@@ -1,20 +1,20 @@
 <script>
-  import { connectionsStore } from "$lib/stores/connections";
+  import { routesStore } from "$lib/stores/routes";
 
   import Delete from "./icons/Delete.svelte";
   import IconButton from "./IconButton.svelte";
   import Input from "./Input.svelte";
 
   function onClickAdd() {
-    connectionsStore.update((arr) => [...arr, ""]);
+    routesStore.update((arr) => [...arr, ""]);
   }
 
   function onClickDelete(index) {
-    connectionsStore.update((arr) => arr.filter((_, i) => i !== index));
+    routesStore.update((arr) => arr.filter((_, i) => i !== index));
   }
 
   function onChangeInput(event, index) {
-    connectionsStore.update((arr) => {
+    routesStore.update((arr) => {
       const updatedArr = [...arr];
       updatedArr[index] = event.detail;
 
@@ -29,7 +29,7 @@
   class="flex flex-col w-full h-auto bg-opacity-60 rounded-xl p-4 space-y-4 bg-background backdrop-blur-sm"
 >
   <div class="space-y-4 max-h-96 overflow-auto">
-    {#each $connectionsStore as connection, index}
+    {#each $routesStore as connection, index}
       <div class="flex items-center space-x-2">
         <Input
           value={connection}

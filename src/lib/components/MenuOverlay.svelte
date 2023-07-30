@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { connectionsStore } from "$lib/stores/connections";
+    import { routesStore } from "$lib/stores/routes";
     import { apiBaseURL } from "$lib/const/apiBaseURL";
     import { loadData, saveData } from "$lib/stores/localStroage";
 
@@ -14,7 +14,7 @@
     let shareURL: string = "";
 
     async function onClickSave() {
-        const newConnections = $connectionsStore;
+        const newConnections = $routesStore;
         saveData("connections", newConnections);
         const response = await fetch(`${apiBaseURL}/routes/add`, {
             method: "POST",
