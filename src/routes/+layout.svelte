@@ -1,5 +1,5 @@
 <script>
-    import { saveData, loadData, removeData } from "$lib/stores/localStroage";
+    import { saveData, loadData } from "$lib/stores/localStroage";
     import { defaultConnections } from "$lib/const/defaultConnections";
 
     import "../app.css";
