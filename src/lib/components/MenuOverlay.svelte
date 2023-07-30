@@ -6,27 +6,12 @@
     import Dialog from "./Dialog.svelte";
     import FloatingActionButton from "./buttons/FloatingActionButton/FloatingActionButton.svelte";
     import RouteOverlay from "./RouteOverlay.svelte";
-    import Save from "./icons/Save.svelte";
     import Share from "./icons/Share.svelte";
+    import SaveFloatingActionButton from "./buttons/FloatingActionButton/SaveFloatingActionButton.svelte";
 
     let showShareDialog = false;
     let shareMessage: string = "";
     let shareURL: string = "";
-
-    async function onClickSave() {
-        const newConnections = $routesStore;
-        saveData("connections", newConnections);
-        const response = await fetch(`${apiBaseURL}/routes/add`, {
-            method: "POST",
-            body: JSON.stringify({ routes: newConnections }),
-            headers: {
-                "content-type": "application/json",
-            },
-        });
-        const routes = await response.json();
-        const routesId = routes.key;
-        saveData("routesId", routesId);
-    }
 
     async function onClickShare() {
         try {
@@ -61,8 +46,6 @@
         <FloatingActionButton title="Поделиться" on:click={onClickShare}>
             <Share />
         </FloatingActionButton>
-        <FloatingActionButton title="Сохранить" on:click={onClickSave}>
-            <Save />
-        </FloatingActionButton>
+        <SaveFloatingActionButton />
     </div>
 </div>
