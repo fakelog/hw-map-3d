@@ -15,8 +15,9 @@ class HwMap3d {
 
     public async addRoutes(routes: any) {
         const response = await this.post('routes/add', { routes: routes });
+        const newRoutes = await response.json();
 
-        return await response.json();
+        return newRoutes.key;
     }
 }
 
