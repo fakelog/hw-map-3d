@@ -7,12 +7,6 @@
     import Header from "$lib/components/Header.svelte";
     import MenuOverlay from "$lib/components/MenuOverlay.svelte";
 
-    const connections = loadData("connections");
-    if (connections) {
-        saveData("routes", connections);
-        removeData("connections");
-    }
-
     let menuVisible = false;
 
     try {
