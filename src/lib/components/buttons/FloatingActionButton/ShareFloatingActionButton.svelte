@@ -16,9 +16,7 @@
             shareMessage = error;
         }
         try {
-            shareURL = `https://hw-map-3d.pages.dev/${JSON.stringify(
-                loadData("routesId")
-            )}`;
+            shareURL = `https://hw-map-3d.pages.dev/${loadData("routesId")}`;
         } catch (error: any) {
             shareURL = error;
         }
