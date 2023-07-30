@@ -1,5 +1,6 @@
 <script lang="ts">
     import Dialog from "$lib/components/Dialog.svelte";
+    import Input from "$lib/components/Input.svelte";
     import Share from "$lib/components/icons/Share.svelte";
     import { loadData } from "$lib/stores/localStroage";
     import FloatingActionButton from "./FloatingActionButton.svelte";
@@ -15,7 +16,9 @@
             shareMessage = error;
         }
         try {
-            shareURL = JSON.stringify(loadData("routes"));
+            shareURL = `https://hw-map-3d.pages.dev/${JSON.stringify(
+                loadData("routesId")
+            )}`;
         } catch (error: any) {
             shareURL = error;
         }
@@ -29,9 +32,14 @@
 
 {#if showShareDialog}
     <Dialog title="Поделиться" on:click={onClickDialog}>
-        <textarea name="" id="" cols="30" rows="10">
-            {shareMessage}
-        </textarea>
+        <div class="flex flex-col space-y-2">
+            <span>Массив цикла:</span>
+            <textarea name="" id="" cols="30" rows="10">
+                {shareMessage}
+            </textarea>
+            <span>Ссылка на прокси:</span>
+            <Input value={shareURL} />
+        </div>
     </Dialog>
 {/if}
 <FloatingActionButton title="Поделиться" on:click={onClick}>

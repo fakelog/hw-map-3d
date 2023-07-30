@@ -1,18 +1,24 @@
-<script>
+<script lang="ts">
     import { createEventDispatcher } from "svelte";
 
-    import Done from "./icons/Done.svelte";
     import IconButton from "./IconButton.svelte";
 
     let classInput = "";
     let focused = false;
     let value = "";
+    let icon = "";
     let inputValue = value;
     let placeholder = "";
 
-    export { classInput as class };
-    export { value };
-    export { placeholder };
+    export { classInput as class, value, icon, placeholder };
+
+    let IconComponent: any = null;
+
+    if (icon) {
+        import(`./icons/${icon}.svelte`).then((module) => {
+            IconComponent = module.default;
+        });
+    }
 
     if (classInput === "") {
         classInput += "flex-grow";
@@ -35,7 +41,7 @@
         dispatch("change", value);
     }
 
-    function onFocus(event) {
+    function onFocus(event: any) {
         focused = true;
         dispatch("focus", event);
     }
@@ -52,9 +58,11 @@
         on:focus={onFocus}
         on:input={handleInput}
     />
-    {#if focused}
-        <IconButton on:click={onClickDone}>
-            <Done />
-        </IconButton>
+    {#if IconComponent != null}
+        {#if focused}
+            <IconButton on:click={onClickDone}>
+                <svelte:component this={IconComponent} />
+            </IconButton>
+        {/if}
     {/if}
 </div>

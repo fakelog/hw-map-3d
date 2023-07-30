@@ -33,6 +33,7 @@
       <div class="flex items-center space-x-2">
         <Input
           value={connection}
+          icon="Done"
           on:change={(event) => onChangeInput(event, index)}
         />
         <IconButton on:click={() => onClickDelete(index)}>
