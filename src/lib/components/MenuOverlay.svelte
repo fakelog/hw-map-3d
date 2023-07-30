@@ -2,11 +2,9 @@
     import { connectionsStore } from "$lib/stores/connections";
     import { apiBaseURL } from "$lib/const/apiBaseURL";
     import { loadData, saveData } from "$lib/stores/localStroage";
-    import { getShareConnections } from "$lib/useCase/shareConnections/ShareConnections";
-    import { ConnectionsUtils } from "$lib/utils/ConnectionsUtils";
 
     import Dialog from "./Dialog.svelte";
-    import FloatingActionButton from "./buttons/FloatingActionButton.svelte";
+    import FloatingActionButton from "./buttons/FloatingActionButton/FloatingActionButton.svelte";
     import RouteOverlay from "./RouteOverlay.svelte";
     import Save from "./icons/Save.svelte";
     import Share from "./icons/Share.svelte";
