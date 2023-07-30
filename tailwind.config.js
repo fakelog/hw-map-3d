@@ -4,10 +4,6 @@ const colors = require('tailwindcss/colors')
 export default {
   content: ['./src/**/*.{html,js,svelte,ts}'],
   theme: {
-    // colors: {
-    //   transparent: 'transparent',
-    //   current: 'currentColor',
-    // },
     extend: {
       colors: {
         accent: colors.amber['100'],
